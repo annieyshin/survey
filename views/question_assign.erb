@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <form action="/question_assign" method="post">
+      <div class="col-md-3">
+        <h3>Pick a survey:</h3>
+        <select id="surveys_drop" name="surveys_drop">
+          <%if @surveys != []%>
+            <% @surveys.each do |survey| %>
+              <option value = "<%= survey.id %>" > <%= survey.title %> </option>
+            <% end %>
+          <% else %>
+            <option value="" disabled selected>no surveys yet</option>
+          <% end %>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <h3>Pick an question:</h3>
+        <select id="questions_drop" name="questions_drop">
+          <%if @questions != []%>
+            <% @questions.each do |question| %>
+              <option value = "<%= question.id %>" > <%= question.name %> </option>
+            <% end %>
+          <% else %>
+            <option value="" disabled selected>no questions yet</option>
+          <% end %>
+        </select>
+      </div>
+  </div>
+      <div class="row">
+        <p>&nbsp;</p>
+        <button type="submit">Pick!</button>
+        <p>&nbsp;</p>
+      </div>
+    </form>
+
+</div>
+
+
+  <% if @surveys == []%>
+  <% else %>
+    <ul>
+    <% @surveys.each() do |survey| %>
+      <li><%= survey.title %> <a href="/survey/<%= survey.id %>/edit">Update this survey title</a></li>
+    <% end %>
+    </ul>
+  <% end %>
