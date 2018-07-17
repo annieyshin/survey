@@ -55,11 +55,11 @@ get("/question_assign") do
   erb(:question_assign)
 end
 
-post("/question_assign") do
+patch("/question_assign") do
   survey_id = params["surveys_drop"].to_i
   question_id = params["questions_drop"].to_i
   question_lookup = Question.find_by(id: question_id)
-  question_lookup.update(survey_id: survey_id)
+  question_lookup.update({survey_id: => survey_id})
   @surveys = Survey.all()
   @questions = Question.all()
   erb(:question_assign)
