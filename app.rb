@@ -25,6 +25,18 @@ post("/question") do
   erb(:question)
 end
 
+get("/question/new") do
+  @questions = Question.all
+  erb(:question_form)
+end
+
+post('/question/new') do
+  question = params["question_text"]
+  Question.create({:question_text => question})
+  redirect '/'
+end
+
+
 get("/survey") do
   @surveys = Survey.all()
   erb(:survey)

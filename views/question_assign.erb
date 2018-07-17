@@ -18,7 +18,7 @@
         <select id="questions_drop" name="questions_drop">
           <%if @questions != []%>
             <% @questions.each do |question| %>
-              <option value = "<%= question.id %>" > <%= question.name %> </option>
+              <option value = "<%= question.id %>" > <%= question.question_text %> </option>
             <% end %>
           <% else %>
             <option value="" disabled selected>no questions yet</option>
