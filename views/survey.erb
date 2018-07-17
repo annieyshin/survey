@@ -1,0 +1,19 @@
+<form action="/survey" method="post">
+  <label for="title">Survey title</label>
+  <input type="text" name="title">
+  <button type="submit">Add!</button>
+</form>
+
+  <% if @surveys == []%>
+  <% else %>
+    <ul>
+    <% @surveys.each() do |survey| %>
+      <li><%= survey.title %> <a href="/survey/<%= survey.id %>/edit">Update this Survey</a></li>
+    <% end %>
+    </ul>
+  <% end %>
+
+
+  <form class="form-inline" method="get" action="/">
+        <button type="submit" class="btn btn-danger" name="clear_btn">Back</button>
+  </form>

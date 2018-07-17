@@ -1,16 +1,13 @@
 <h1>Customize your survey here</h1>
 
 <div class="container">
-  <a href="/employee">View all surveys</a>
+  <a href="/question">View all questions</a>
   <p> </p>
-  <a href="/employee/new">Add a new survey</a>
+  <a href="/question/new">Add a new question</a>
   <p> </p>
-  <a href="/division">View all questions</a>
+  <a href="/survey">Add a new survey</a>
   <p> </p>
-  <a href="/employee_assign">Add a question to a survey</a>
+  <a href="/question_assign">Add a question to a survey</a>
 </div>
 <br>
 <p>&nbsp;</p>
-<% @surveys.each() do |survey| %>
-  <li><%= survey.name %> <a href="/survey/<% survey.id %>/edit">Update this survey</a></li>
-  <% end %>
