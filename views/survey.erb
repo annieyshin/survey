@@ -8,7 +8,15 @@
   <% else %>
     <ul>
     <% @surveys.each() do |survey| %>
-      <li><%= survey.title %> <a href="/survey/<%= survey.id %>/edit">Update this Survey</a></li>
+      <li>
+        <h2><%= survey.title %></h2>
+        <p><a href="/survey/<%= survey.id %>/edit">Update this Survey</a></p>
+        <p>
+          <% survey.questions.each() do |question| %>
+            <%= question.question_text %>
+          <% end %>
+        </p>
+      </li>
     <% end %>
     </ul>
   <% end %>
