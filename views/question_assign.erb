@@ -1,54 +1,62 @@
 <div class="container">
-  <div class="row">
-    <form action="/question_assign" method="post">
-      <div class="col-md-3">
+  <form action="/question_assign" method="post">
+    <div class="row">
+      <div class="col-md-6">
         <h3>Pick a survey:</h3>
-        <select id="surveys_drop" name="surveys_drop">
+          <select id="surveys_drop" name="surveys_drop">
           <%if @surveys != []%>
             <% @surveys.each do |survey| %>
-              <option value = "<%= survey.id %>" > <%= survey.title %> </option>
+            <option value = "<%= survey.id %>" > <%= survey.title %> </option>
             <% end %>
           <% else %>
             <option value="" disabled selected>no surveys yet</option>
           <% end %>
-        </select>
+          </select>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-6">
         <h3>Pick an question:</h3>
         <select id="questions_drop" name="questions_drop">
           <%if @questions != []%>
-            <% @questions.each do |question| %>
-              <option value = "<%= question.id %>" > <%= question.question_text %> </option>
-            <% end %>
+          <% @questions.each do |question| %>
+            <option value = "<%= question.id %>" > <%= question.question_text %> </option>
+          <% end %>
           <% else %>
             <option value="" disabled selected>no questions yet</option>
           <% end %>
         </select>
       </div>
-  </div>
-      <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-md-6">
         <p>&nbsp;</p>
-        <button type="submit">Pick!</button>
+        <button type="submit" class="btn btn-info">Pick!</button>
         <p>&nbsp;</p>
       </div>
-    </form>
-
-</div>
-
-<% if @surveys == []%>
-<% else %>
-  <ul>
-  <% @surveys.each() do |survey| %>
-  <h2><%= survey.title %></h2>
-  <a href="/survey/<%= survey.id %>/edit">Update this Survey</a>
-  <p><% survey.questions.each() do |question| %>
-  <li><%= question.question_text %></li>
-  <% end %>
-  </p>
-  <% end %>
-  </ul>
-<% end %>
-
-  <form class="form-inline" method="get" action="/">
-        <button type="submit" class="btn btn-danger" name="clear_btn">Back</button>
+    </div>
   </form>
+  <div class="row">
+    <div class="col-md-10">
+      <% if @surveys == []%>
+      <% else %>
+        <ul>
+          <% @surveys.each() do |survey| %>
+            <li>
+              <h2><%= survey.title %></h2>
+              <a href="/survey/<%= survey.id %>/edit">Update this Survey</a>
+              <% survey.questions.each() do |question| %>
+                <p><%= question.question_text %></p>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    <form class="form-inline" method="get" action="/">
+      <button type="submit" class="btn btn-danger" name="clear_btn">Back</button>
+    </form>
+    </div>
+  </div>
+</div>
