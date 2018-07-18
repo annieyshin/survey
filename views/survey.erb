@@ -8,19 +8,15 @@
   <% else %>
     <ul>
     <% @surveys.each() do |survey| %>
-      <li>
-        <h2><%= survey.title %></h2>
-        <p><a href="/survey/<%= survey.id %>/edit">Update this Survey</a></p>
-        <p>
-          <% survey.questions.each() do |question| %>
-            <%= question.question_text %>
-          <% end %>
-        </p>
-      </li>
+    <h2><%= survey.title %></h2>
+    <a href="/survey/<%= survey.id %>/edit">Update this Survey</a>
+    <p><% survey.questions.each() do |question| %>
+    <li><%= question.question_text %></li>
+    <% end %>
+    </p>
     <% end %>
     </ul>
   <% end %>
-
 
   <form class="form-inline" method="get" action="/">
         <button type="submit" class="btn btn-danger" name="clear_btn">Back</button>
